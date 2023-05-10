@@ -1,26 +1,10 @@
+"use client";
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Button, Grid } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    margin: theme.spacing(2),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-  image: {
-    maxWidth: "100%",
-    maxHeight: "400px",
-    objectFit: "contain",
-  },
-}));
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
 
 const Gallery = ({ images }) => {
-  const classes = useStyles();
   const [index, setIndex] = useState(0);
 
   const handlePrev = () => {
@@ -32,8 +16,8 @@ const Gallery = ({ images }) => {
   };
 
   return (
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
+    <div style={styles.root}>
+      <Paper style={styles.paper}>
         <Grid container spacing={2} alignItems="center">
           <Grid item xs={2}>
             <Button variant="contained" onClick={handlePrev}>
@@ -44,7 +28,7 @@ const Gallery = ({ images }) => {
             <img
               src={images[index]}
               alt={`Image ${index + 1}`}
-              className={classes.image}
+              style={styles.image}
             />
           </Grid>
           <Grid item xs={2}>
@@ -56,6 +40,23 @@ const Gallery = ({ images }) => {
       </Paper>
     </div>
   );
+};
+
+const styles =  {
+    root: {
+      flexGrow: 1,
+      margin: 16,
+    },
+    paper: {
+      padding: 16,
+      textAlign: "center",
+      color: "black",
+    },
+    image: {
+      maxWidth: "100%",
+      maxHeight: "400px",
+      objectFit: "contain",
+    },
 };
 
 export default Gallery;
