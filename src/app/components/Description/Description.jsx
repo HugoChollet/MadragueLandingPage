@@ -1,48 +1,24 @@
+"use client";
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Box, Grid, Typography } from "@material-ui/core";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    margin: theme.spacing(2),
-  },
-  textContainer: {
-    padding: theme.spacing(2),
-    color: theme.palette.text.secondary,
-    textAlign: "left",
-  },
-  imageContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  image: {
-    maxWidth: "100%",
-    maxHeight: "400px",
-    objectFit: "cover",
-  },
-  left: {
-    flexDirection: "row-reverse",
-  },
-}));
 
-const Description = ({ text, image, direction = "left" }) => {
-  const classes = useStyles();
+export const Description = ({ text, image, direction = "left" }) => {
 
   return (
-    <div className={classes.root}>
+    <div style={styles.root}>
       <Grid container spacing={2} alignItems="center">
-        <Grid item xs={12} md={6} className={classes.imageContainer}>
-          <img src={image} alt="Description" className={classes.image} />
+        <Grid item xs={12} md={6} style={styles.imageContainer}>
+          <img src={image} alt="Description" style={styles.image} />
         </Grid>
-        <Grid item xs={12} md={6} className={classes.textContainer}>
+        <Grid item xs={12} md={6} style={styles.textContainer}>
           <Box
             display="flex"
             flexDirection="column"
             justifyContent="center"
             height="100%"
-            className={direction === "left" ? "" : classes.left}
           >
             <Typography variant="h5">{text}</Typography>
           </Box>
@@ -51,5 +27,31 @@ const Description = ({ text, image, direction = "left" }) => {
     </div>
   );
 };
+
+const styles = {
+    root: {
+      flexGrow: 1,
+      margin: 16,
+    },
+    textContainer: {
+      padding: 16,
+      color: "black",
+      textAlign: "left",
+    },
+    imageContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "row-reverse"
+    },
+    image: {
+      maxWidth: "100%",
+      maxHeight: "400px",
+      objectFit: "cover",
+    },
+    left: {
+      flexDirection: "row-reverse",
+    },
+  };
 
 export default Description;
