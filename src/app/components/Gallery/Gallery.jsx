@@ -1,8 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
+import { Button, Grid, Paper } from '@mui/material';
 
 const Gallery = ({ images }) => {
   const [index, setIndex] = useState(0);
